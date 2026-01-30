@@ -121,7 +121,7 @@ class ExaBot(discord.Client):
                             url = cite.get('url', '')
                             title = cite.get('title', 'Source')
                             if url:
-                                links += f"{i}. {title}\n   {url}\n"
+                                links += f"{i}. {title}\n   <{url}>\n"
 
                     return (answer_text, links)
                 else:
