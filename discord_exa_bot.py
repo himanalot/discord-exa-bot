@@ -54,7 +54,7 @@ class ExaBot(discord.Client):
         if message.content.strip().lower() == '/links':
             if self.last_links:
                 log(f"📎 Sending stored links")
-                await message.channel.send(self.last_links)
+                await message.channel.send(self.last_links, suppress_embeds=True)
             else:
                 await message.channel.send("No links stored yet")
             return
@@ -78,7 +78,7 @@ class ExaBot(discord.Client):
             if answer:
                 self.last_links = links  # Store links for /links command
                 log(f"✓ Sending answer ({len(answer)} chars)")
-                await message.channel.send(answer)
+                await message.channel.send(answer, suppress_embeds=True)
             else:
                 log(f"✗ No answer from Exa")
                 await message.channel.send("Couldn't find an answer, sorry!")
