@@ -45,8 +45,9 @@ class ExaBot(discord.Client):
         # Debug: print all messages
         log(f"[DEBUG] Message in channel {message.channel.id} from {message.author.name}: {message.content[:50]}")
 
-        # Only from target channel
-        if message.channel.id != CHANNEL_ID:
+        # Allow from any channel if it's me, otherwise only target channel
+        is_me = message.author.id == self.user.id
+        if not is_me and message.channel.id != CHANNEL_ID:
             log(f"[DEBUG] Wrong channel: {message.channel.id} != {CHANNEL_ID}")
             return
 
