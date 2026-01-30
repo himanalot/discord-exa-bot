@@ -42,13 +42,9 @@ class ExaBot(discord.Client):
             log(f'✗ Could not find channel {CHANNEL_ID}')
 
     async def on_message(self, message):
-        # Debug: print all messages
-        log(f"[DEBUG] Message in channel {message.channel.id} from {message.author.name}: {message.content[:50]}")
-
         # Allow from any channel if it's me, otherwise only target channel
         is_me = message.author.id == self.user.id
         if not is_me and message.channel.id != CHANNEL_ID:
-            log(f"[DEBUG] Wrong channel: {message.channel.id} != {CHANNEL_ID}")
             return
 
         # Check for /links command
